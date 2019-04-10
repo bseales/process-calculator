@@ -1,0 +1,42 @@
+<html>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+	<script type="text/javascript" src="processes.js"></script>
+	<head>
+
+	</head>
+	<style>
+		.headerRow td {
+			padding:15px;
+			padding-bottom:none;
+			text-align: center;
+		}
+		.bodyRow td {
+			padding:10px;
+			padding-top:none;
+		}
+	</style>
+	<body>
+		<div><h1>OS Process Calculator</h1></div>
+		<div style='width:50%'>
+			<table>
+				<thead>
+					<tr class="headerRow">
+						<td>Process name</td>
+						<td>Arrival Time</td>
+						<td>Burst Time</td>
+						<td>Priority</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="bodyRow">
+						<td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div style='padding-top: 10px; float:right; padding-right:20px'>
+				<button id="calculateButton">Calculate</button>
+			</div>
+		</div>
+	</body>
+</html>
