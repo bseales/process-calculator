@@ -42,7 +42,7 @@ $(document).ready(function() {
 					names.push("empty");
 					bursts.push(proc.burst);
 					var dataArr = [];
-					dataArr.push(proc.time);
+					dataArr.push(proc.burst);
 					datasets.push({
 						"label": "empty",
 						"data": dataArr,
@@ -53,7 +53,7 @@ $(document).ready(function() {
 			names.push(proc.name);
 			bursts.push(proc.burst);
 			var dataArr = [];
-			dataArr.push(proc.time);
+			dataArr.push(proc.burst);
 			datasets.push({
 				"label": proc.name,
 				"data": dataArr,
