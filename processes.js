@@ -36,19 +36,33 @@ $(document).ready(function() {
 		var names = [];
 		var bursts = [];
 		var datasets = [];
+		var currentTime = 0;
 		_.each(sortedArr, function(proc) {
 			if(count == 0) {
 				if(proc.time > 0) {
 					names.push("empty");
-					bursts.push(proc.burst);
+					//bursts.push(proc.burst);
 					var dataArr = [];
-					dataArr.push(proc.burst);
+					dataArr.push(proc.time);
 					datasets.push({
 						"label": "empty",
 						"data": dataArr,
 						"backgroundColor": "white"
 					});
+					currentTime += proc.time;
 				}
+			}
+			else if(currentTime < proc.time) {
+				names.push("empty" + count);
+				//bursts.push(proc.burst);
+				var dataArr = [];
+				dataArr.push(proc.time - currentTime);
+				datasets.push({
+					"label": "empty" + count,
+					"data": dataArr,
+					"backgroundColor": "white"
+				});
+				currentTime = proc.time;
 			}
 			names.push(proc.name);
 			bursts.push(proc.burst);
@@ -60,6 +74,7 @@ $(document).ready(function() {
 				"backgroundColor": getRandomColor()
 			});
 			count ++;
+			currentTime += proc.burst;
 		})
 
 		//$("#fcfs").destroy();
@@ -75,6 +90,14 @@ $(document).ready(function() {
 		      	display: true,
 		      	onClick: (e) => e.stopPropagation()
 		      },
+		      legend: {
+		            labels: {
+		                filter: function(item, chart) {
+		                    // Logic to remove a particular legend item goes here
+		                    return !item.text.includes('empty');
+		                }
+		            }
+		        },
 		      title: {
 		        display: true,
 		        text: 'First Come First Served'
@@ -94,7 +117,7 @@ $(document).ready(function() {
 		    }
 		});
 
-
+		console.log(bursts);
 
 
 	}
